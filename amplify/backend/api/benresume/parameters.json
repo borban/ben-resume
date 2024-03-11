@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "benresume",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2024-03-11T22:32:06.434Z"
+}

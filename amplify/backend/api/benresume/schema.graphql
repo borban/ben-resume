@@ -1,0 +1,48 @@
+type Header @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  location: String
+  phone: String
+  email: String
+  custom_url1: String
+  custom_url2: String
+  custom_url3: String
+  summary: String
+}
+
+type Clearance @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  type: String
+  status: String
+}
+
+type Achievement @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  location: String
+  valid_start: String
+  valid_end: String
+  verification_url: String
+  verification_code: String
+}
+
+type EmployeeSkill @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+}
+
+type EmployeeRole @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  start_date: String
+  end_date: String
+  description: String
+  employerID: ID! @index(name: "byEmployer")
+}
+
+type Employer @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  location: String
+  EmployeeRoles: [EmployeeRole] @hasMany(indexName: "byEmployer", fields: ["id"])
+}

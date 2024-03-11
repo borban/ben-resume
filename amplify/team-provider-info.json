@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-benresume-staging-210116-authRole",
+      "UnauthRoleArn": "arn:aws:iam::419860324848:role/amplify-benresume-staging-210116-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::419860324848:role/amplify-benresume-staging-210116-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-benresume-staging-210116-deployment",
+      "UnauthRoleName": "amplify-benresume-staging-210116-unauthRole",
+      "StackName": "amplify-benresume-staging-210116",
+      "StackId": "arn:aws:cloudformation:us-east-1:419860324848:stack/amplify-benresume-staging-210116/807ad920-dfea-11ee-b52b-0affc723f519",
+      "AmplifyAppId": "dv0hbuhcocyhz"
+    },
+    "categories": {
+      "api": {
+        "benresume": {}
+      }
+    }
+  }
+}
