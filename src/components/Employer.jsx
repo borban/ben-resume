@@ -29,8 +29,8 @@ function Employer(props) {
         <>
             {employer && (
                 <div key={employer.id}>
-                    <h1>{employer.name}</h1>
-                    <h3>{employer.location}</h3>
+                    <h2>{employer.name}</h2>
+                    <h4>{employer.location}</h4>
                 </div>
             )}
         </>

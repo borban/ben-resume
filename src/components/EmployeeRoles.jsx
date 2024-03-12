@@ -17,7 +17,11 @@ function EmployeeRoles() {
                 const response = await client.graphql({
                     query: listEmployeeRoles,
                 });
-                setEmployeeRoles(response.data.listEmployeeRoles);
+                // Sort the items array based on the start date in descending order
+                const sortedEmployeeRoles = response.data.listEmployeeRoles.items.sort(
+                    (a, b) => new Date(b.start_date) - new Date(a.start_date)
+                );
+                setEmployeeRoles({ items: sortedEmployeeRoles });
             } catch (error) {
                 console.error('Error fetching EmployeeRoles:', error);
             }
@@ -33,7 +37,17 @@ function EmployeeRoles() {
                     <div key={employeeRole.id}>
                         <Employer id={employeeRole.employerID} />
                         <h4>{employeeRole.name}</h4>
-                        <h4>{employeeRole.start_date} - {employeeRole.end_date}</h4>
+                        <h4>
+                            {new Date(employeeRole.start_date).toLocaleDateString('en-US', {
+                                month: 'long',
+                                year: 'numeric',
+                            })}
+                            {' - '}
+                            {new Date(employeeRole.end_date).toLocaleDateString('en-US', {
+                                month: 'long',
+                                year: 'numeric',
+                            })}
+                        </h4>
                         <p>{employeeRole.description}</p>
                     </div>
                 ))}
