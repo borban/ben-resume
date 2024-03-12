@@ -26,14 +26,14 @@ function Employer(props) {
     }, [props.id]); // Add props.id to the dependency array
 
     return (
-        <>
+        <div>
             {employer && (
                 <div key={employer.id}>
                     <h2>{employer.name}</h2>
                     <h4>{employer.location}</h4>
                 </div>
             )}
-        </>
+        </div>
     );
 }
 

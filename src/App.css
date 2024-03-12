@@ -1,21 +1,44 @@
 #root {
-  max-width: 1280px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h4 {
+  margin: 0;
+}
+
+/* EmployeeRoles container */
+.EmployeeRoles-container {
+  display: flex; /* Make the container flex */
+  flex-wrap: wrap; /* Allow items to wrap to next line */
+  width: 100%;
+}
+
+.EmployeeRoles-item {
+  flex-basis: calc(33.33% - 20px); /* Set initial width to one-third minus padding */
+  margin-right: 30px; /* Add some space between items */
+  margin-bottom: 30px; /* Add space below items */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.EmployeeRoles-item:nth-child(3n) {
+  margin-right: 0; /* Remove right margin for every third item to prevent overflow */
 }
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
+  }
+}
+
+@media (max-width: 768px) {
+  .EmployeeRoles-item {
+    flex-basis: calc(50% - 30px); /* Set initial width to one-half minus padding */
   }
 }

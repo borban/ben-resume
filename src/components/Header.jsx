@@ -26,11 +26,12 @@ function Header() {
   }, []); // Empty dependency array to run the effect only once
 
   return (
-    <>
+    <div>
       <h1>{header.title}</h1>
       <h2>{header.location} | {header.phone} | {header.email}</h2>
+      <h2><a href={header.custom_url2} target='_blank'>GitHub</a> | <a href={header.custom_url3} target='_blank'>LinkedIn</a></h2>
       <p>{header.summary}</p>
-    </>
+    </div>
   );
 }
 

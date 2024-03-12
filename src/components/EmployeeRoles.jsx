@@ -31,10 +31,10 @@ function EmployeeRoles() {
     }, []); // Empty dependency array to run the effect only once
 
     return (
-        <>
+        <div className='EmployeeRoles-container'>
             {allEmployeeRoles.items &&
                 allEmployeeRoles.items.map((employeeRole, index) => (
-                    <div key={employeeRole.id}>
+                    <div key={employeeRole.id} className='EmployeeRoles-item'>
                         <Employer id={employeeRole.employerID} />
                         <h4>{employeeRole.name}</h4>
                         <h4>
@@ -43,15 +43,15 @@ function EmployeeRoles() {
                                 year: 'numeric',
                             })}
                             {' - '}
-                            {new Date(employeeRole.end_date).toLocaleDateString('en-US', {
+                            {employeeRole.end_date ? new Date(employeeRole.end_date).toLocaleDateString('en-US', {
                                 month: 'long',
                                 year: 'numeric',
-                            })}
+                            }) : 'Present'}
                         </h4>
                         <p>{employeeRole.description}</p>
                     </div>
                 ))}
-        </>
+        </div>
     );
 }
 
