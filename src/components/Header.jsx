@@ -16,8 +16,6 @@ function Header() {
           query: getHeader,
           variables: { id: '4d486b6d-f2bf-4c35-aa40-1342b07d93e2' },
         });
-
-        console.log(response);
         setHeader(response.data.getHeader);
       } catch (error) {
         console.error('Error fetching headers:', error);
