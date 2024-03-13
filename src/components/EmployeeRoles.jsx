@@ -5,6 +5,7 @@ import { generateClient } from 'aws-amplify/api';
 import { listEmployeeRoles } from '../graphql/queries';
 
 import Employer from './Employer';
+import TimeTracker from './TimeTracker';
 
 function EmployeeRoles() {
     const client = generateClient();
@@ -21,6 +22,7 @@ function EmployeeRoles() {
                 const sortedEmployeeRoles = response.data.listEmployeeRoles.items.sort(
                     (a, b) => new Date(b.start_date) - new Date(a.start_date)
                 );
+
                 setEmployeeRoles({ items: sortedEmployeeRoles });
             } catch (error) {
                 console.error('Error fetching EmployeeRoles:', error);
@@ -48,6 +50,7 @@ function EmployeeRoles() {
                                 year: 'numeric',
                             }) : 'Present'}
                         </h4>
+                        <h4><TimeTracker startDate={new Date(employeeRole.start_date)} endDate={employeeRole.end_date ? new Date(employeeRole.end_date) : new Date()}/></h4>
                         <p>{employeeRole.description}</p>
                     </div>
                 ))}
