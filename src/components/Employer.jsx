@@ -8,6 +8,7 @@ function Employer(props) {
     const client = generateClient();
 
     const [employer, setEmployer] = useState({});
+    const [isLoading, setIsLoading] = useState(true); // State to track loading status
 
     useEffect(() => {
         const fetchEmployer = async () => {
@@ -17,6 +18,7 @@ function Employer(props) {
                     variables: { id: props.id }
                 });
                 setEmployer(response.data.getEmployer);
+                setIsLoading(false); // Set loading to false after data is fetched
             } catch (error) {
                 console.error('Error fetching employer:', error);
             }
@@ -27,10 +29,16 @@ function Employer(props) {
 
     return (
         <div>
-            {employer && (
-                <div key={employer.id}>
-                    <h2>{employer.name}</h2>
-                    <h4>{employer.location}</h4>
+            {isLoading ? ( // Display loading indicator while isLoading is true
+                <div className="loading"></div>
+            ) : (
+                <div>
+                    {employer && (
+                        <div key={employer.id}>
+                            <h2>{employer.name}</h2>
+                            <h4>{employer.location}</h4>
+                        </div>
+                    )}
                 </div>
             )}
         </div>

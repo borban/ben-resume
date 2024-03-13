@@ -11,6 +11,7 @@ function EmployeeRoles() {
     const client = generateClient();
 
     const [allEmployeeRoles, setEmployeeRoles] = useState({});
+    const [isLoading, setIsLoading] = useState(true); // State to track loading status
 
     useEffect(() => {
         const fetchEmployeeRoles = async () => {
@@ -24,6 +25,7 @@ function EmployeeRoles() {
                 );
 
                 setEmployeeRoles({ items: sortedEmployeeRoles });
+                setIsLoading(false); // Set loading to false after data is fetched
             } catch (error) {
                 console.error('Error fetching EmployeeRoles:', error);
             }
@@ -34,7 +36,10 @@ function EmployeeRoles() {
 
     return (
         <div className='EmployeeRoles-container'>
-            {allEmployeeRoles.items &&
+            {isLoading ? ( // Display loading indicator while isLoading is true
+                <div className="loading">Swirly</div>
+            ) : (
+                allEmployeeRoles.items &&
                 allEmployeeRoles.items.map((employeeRole, index) => (
                     <div key={employeeRole.id} className='EmployeeRoles-item'>
                         <Employer id={employeeRole.employerID} />
@@ -53,7 +58,8 @@ function EmployeeRoles() {
                         <h4><TimeTracker startDate={new Date(employeeRole.start_date)} endDate={employeeRole.end_date ? new Date(employeeRole.end_date) : new Date()}/></h4>
                         <p>{employeeRole.description}</p>
                     </div>
-                ))}
+                ))
+            )}
         </div>
     );
 }
