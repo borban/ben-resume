@@ -37,7 +37,7 @@ function EmployeeRoles() {
     return (
         <div className='EmployeeRoles-container'>
             {isLoading ? ( // Display loading indicator while isLoading is true
-                <div className="loading">Swirly</div>
+                <div className="loading"></div>
             ) : (
                 allEmployeeRoles.items &&
                 allEmployeeRoles.items.map((employeeRole, index) => (
